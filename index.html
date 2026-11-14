@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SkyCast - Intelligent AI Weather Assistant built with IBM watsonx Assistant and Open-Meteo REST APIs." />
+  <meta name="author" content="Uyienminoseye Okodugha" />
+  <title>SkyCast — AI Weather Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="assets/images/skycast_favicon.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <header>
+    <a href="#" class="brand">
+      <div class="brand-icon"><img src="assets/images/skycast_avatar.png" alt=""></div>
+      <span>SkyCast</span>
+    </a>
+    <a href="https://github.com/UyiBiglia/SkyCast" target="_blank" rel="noopener noreferrer" class="github-link">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+      <span>GitHub Repository</span>
+    </a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="badge">
+        <span>●</span> IBM watsonx Assistant · Open-Meteo REST API
+      </div>
+      <h1>Intelligent Weather Insights, <span>Right When You Need Them</span></h1>
+      <p>
+        SkyCast connects conversational AI with live meteorological data. Ask about real-time temperatures, rain probability, and smart outfit advice for any city across the globe.
+      </p>
+      <div class="cta-hint">
+        <span class="pulse-dot"></span>
+        <span>Click the weather launcher in the bottom right corner to begin chatting!</span>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <span class="card-icon">🌍</span>
+        <h3>Global Geocoding & Forecasts</h3>
+        <p>
+          Queries Open-Meteo's geocoding REST API to resolve city coordinates on the fly, then fetches live temperature, conditions, and wind speed.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">☔</span>
+        <h3>Rain & Umbrella Alerts</h3>
+        <p>
+          Evaluates real-time precipitation probability and WMO weather codes to provide an instant yes/no verdict on taking an umbrella before heading out.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🧥</span>
+        <h3>Smart Outfit Advice</h3>
+        <p>
+          Uses temperature thresholds to provide comfort-calibrated clothing recommendations—from warm layers under 15°C to light, breathable fabrics above 24°C.
+        </p>
+      </div>
+    </section>
+
+    <section class="prompts-section">
+      <h2>Sample Prompts to Try</h2>
+      <p>Test SkyCast's conversational actions and live API responses directly in the chat widget:</p>
+      <div class="prompts-list">
+        <span class="prompt-chip">"What's the weather in Lagos?"</span>
+        <span class="prompt-chip">"Do I need an umbrella in London today?"</span>
+        <span class="prompt-chip">"What should I wear in Benin City?"</span>
+        <span class="prompt-chip">"What is the forecast in Abuja?"</span>
+        <span class="prompt-chip">"Check weather in Ekpoma"</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Built by <strong>Uyienminoseye Okodugha</strong> · Powered by <strong>IBM watsonx Assistant</strong> & <strong>Open-Meteo REST API</strong>
+    </p>
+  </footer>
+
+  <!-- IBM watsonx Assistant Web Chat Integration -->
+  <script>
+    window.watsonAssistantChatOptions = {
+      integrationID: "fb109465-def6-4f0c-870f-5fb6d5ed7906",
+      region: "https://integrations.eu-gb.assistant-builder.watson.appdomain.cloud",
+      serviceInstanceID: "69cdb4d9-4c94-430d-bfa3-c219faaa9027",
+      orchestrateUIAgentExtensions: false,
+      onLoad: async (instance) => { await instance.render(); }
+    };
+    setTimeout(function(){
+      const t = document.createElement('script');
+      t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+      document.head.appendChild(t);
+    });
+  </script>
+</body>
+</html>
