@@ -11,9 +11,13 @@
 
 ## Live Demonstration
 
-* **Interactive Web App**: [https://uyibiglia.github.io/SkyCast/](https://uyibiglia.github.io/SkyCast/)
+* **Interactive Web Showcase**: [https://uyibiglia.github.io/SkyCast/](https://uyibiglia.github.io/SkyCast/)
 * **Assistant Platform**: IBM watsonx Assistant (EU-GB Region)
 * **Custom Web Chat Integration**: Embedded responsive chat widget with custom 100x100 branding avatar
+
+<p align="center">
+  <img src="screenshots/home.jpeg" alt="SkyCast Web Showcase & Live Assistant" width="100%" />
+</p>
 
 ---
 
@@ -58,12 +62,33 @@ SkyCast demonstrates how enterprise conversational AI assistants consume externa
 
 ---
 
+## Assistant Configuration & Extension Logic
+
+The assistant's conversational engine is configured inside IBM watsonx Assistant with discrete actions, custom OpenAPI extensions, and session variable persistence:
+
+| Action Catalog & Routing | OpenAPI Extension Execution Logic |
+| :---: | :---: |
+| ![watsonx Assistant Action Catalog](screenshots/action_list.jpeg) | ![Extension Step & Variable Mapping](screenshots/weather_forcast_logic.jpeg) |
+| *Action inventory: General Weather, Rain Check, Smart Outfit Advice* | *Calling Open-Meteo extension & mapping JSON body results* |
+
+<p align="center">
+  <img src="screenshots/working_with_saved_response.jpeg" alt="Working with Session Variables and Saved Responses" width="85%" />
+  <br />
+  <em>Session variables and saved responses preserving geographical context across steps</em>
+</p>
+
+---
+
 ## Core Conversational Actions & Business Logic
 
 ### 1. General Weather Check
 * **Intent**: Retrieve atmospheric conditions for any city worldwide.
 * **Capabilities**: Tested across diverse global locations (e.g., Lagos, Abuja, Benin City, Ekpoma, London, New York).
 * **Flow**: Extracts the target city from user input, resolves geographical coordinates, queries current weather metrics, and generates a formatted status card in conversation.
+
+<p align="center">
+  <img src="screenshots/weather_forcast.jpeg" alt="Live Weather Forecast Conversation Test" width="70%" />
+</p>
 
 ### 2. Rain & Umbrella Decision Engine
 * **Intent**: Provide a definitive yes/no recommendation on carrying rain protection.
@@ -72,12 +97,20 @@ SkyCast demonstrates how enterprise conversational AI assistants consume externa
   * **Rain Expected**: Clear alert advising the user to carry an umbrella or rain gear.
   * **Dry Conditions**: Reassuring notice that skies are clear with no umbrella needed.
 
+<p align="center">
+  <img src="screenshots/umbrella_needed.jpeg" alt="Live Rain and Umbrella Recommendation Test" width="70%" />
+</p>
+
 ### 3. Smart Outfit Advice
 * **Intent**: Provide functional clothing recommendations tailored to current local conditions.
 * **Calibration Tiers**:
   * **Cool / Cold (< 15°C)**: Warm layers, coat, thermal protection, or heavy knitwear.
   * **Mild / Comfortable (15°C – 24°C)**: Light jacket, cardigan, or comfortable long-sleeve casual wear.
   * **Warm / Hot (> 24°C)**: Lightweight, breathable fabrics (cotton/linen), sun protection, and hydration reminders.
+
+<p align="center">
+  <img src="screenshots/smart_wear.jpeg" alt="Live Smart Outfit Advice Conversation Test" width="70%" />
+</p>
 
 ### 4. Interactive Conversational Looping
 * Rather than abruptly terminating conversations after a single response, SkyCast presents a decision prompt:
@@ -109,13 +142,22 @@ SkyCast interfaces with Open-Meteo using two validated OpenAPI 3.0 documents con
 
 ```text
 SkyCast/
-├── index.html         # Modern, responsive weather showcase landing page
-├── README.md          # Comprehensive technical and architectural documentation
-└── screenshots/       # Visual proof-of-work documentation (watsonx actions & UI)
-    ├── action_general_weather.png
-    ├── action_rain_umbrella.png
-    ├── action_smart_outfit.png
-    └── live_chat_test.png
+├── index.html                            # Modern, responsive weather showcase landing page
+├── README.md                             # Comprehensive technical and architectural documentation
+├── assets/
+│   ├── css/
+│   │   └── style.css                     # Custom styles, responsive grid, glassmorphism UI
+│   └── images/
+│       ├── skycast_avatar.png            # 100x100 web chat header branding
+│       └── skycast_favicon.png           # Browser tab icon
+└── screenshots/                          # Visual proof-of-work documentation
+    ├── home.jpeg                         # Live web showcase and embedded watsonx chat
+    ├── action_list.jpeg                  # Configured watsonx Assistant action catalog
+    ├── weather_forcast_logic.jpeg        # OpenAPI extension integration & variable mapping
+    ├── working_with_saved_response.jpeg  # Session variables & saved responses
+    ├── weather_forcast.jpeg              # Live test: real-time temperature & forecast
+    ├── umbrella_needed.jpeg              # Live test: predictive rain & umbrella alert
+    └── smart_wear.jpeg                   # Live test: temperature-calibrated outfit guidance
 ```
 
 ---
